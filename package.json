@@ -1,0 +1,14 @@
+{
+  "name": "codereview-extension",
+  "description": "Extension de GitHub Copilot para revision de codigo ",
+  "main": "index.js",
+  "scripts": {
+    "start": "node src/app.js",
+    "dev": "node --watch src/app.js"
+  },
+  "type": "module",
+  "dependencies": {
+    "@octokit/core": "^6.1.2",
+    "express": "^4.19.2"
+  }
+}
