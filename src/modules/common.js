@@ -12,11 +12,13 @@ const handleConversation = (userName, messages) => {
         const language = lastMessage.copilot_references[0].data.language
         const file = lastMessage.copilot_references[0].data.content
         const contextLanguage = setContextLanguage(language)
-        messages.unshift({ role: "system", context: `${contextLanguage}` })
-        messages.unshift({ role: "system", context: `If the user asking for code review, review this code:\n${file} and provide feedback` })
-      }
-    messages.unshift({ role: "system", context: "You are a helpful assistant for code review" })
+        messages.unshift({ role: "system", content: "You must tell the user where you got the information for the review." })
+        messages.unshift({ role: "system", content: `${contextLanguage}` })
+        messages.unshift({ role: "system", content: `If the user asking for code review, review this code:\n${file} and provide feedback` })
+    }
+    messages.unshift({ role: "system", content: "You are a helpful assistant for code review" })
     messages.unshift({ role: "system", content: `Start every response with the user's name, which is @${userName}` })
+    console.log(messages)
     return messages
 }
 
